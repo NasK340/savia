@@ -1,0 +1,12 @@
+# Netlify redirects for React SPA
+# This ensures all routes are handled by React Router
+
+# Handle auth callback specifically with all query parameters
+/auth    /index.html   200
+
+# Handle app routes
+/app     /index.html   200
+/app/*   /index.html   200
+
+# Handle all other routes by serving index.html
+/*    /index.html   200
