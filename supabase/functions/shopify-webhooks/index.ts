@@ -42,11 +42,11 @@ serve(async (req) => {
 
   const topic = req.headers.get("X-Shopify-Topic") ?? "";
   const shop = req.headers.get("X-Shopify-Shop-Domain") ?? "";
-  const hmac = req.headers.get("X-Shopify-Hmac-SHA256") ?? "";
+  const hmac = req.headers.get("X-Shopify-Hmac-Sha256") ?? "";
   const webhookId = req.headers.get("X-Shopify-Webhook-Id") ?? crypto.randomUUID();
 
   try {
-    const secret = Deno.env.get("SHOPIFY_API_SECRET");
+    const secret = Deno.env.get("SHOPIFY_CLIENT_SECRET");
     if (!secret) return new Response("Missing SHOPIFY_API_SECRET", { status: 500, headers: CORS });
 
     const raw = await req.arrayBuffer();
